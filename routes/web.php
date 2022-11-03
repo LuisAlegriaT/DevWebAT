@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\controlviews;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('articulos', 'articulos')->name('arts');
-Route::view('promo', 'promo')->name('promo');
-Route::view('reseñas', 'reseñas')->name('reseñas');
+Route::get('articulos', [controlviews::class, 'verArts'])->name('arts');
+Route::get('promo', [controlviews::class,'verPromos'])->name('promo');
+Route::get('reseñas', [controlviews::class,'verReseñas'])->name('reseñas');
+
+Route::post('enviarReseña', [controlviews::class, 'recibeReseña'])->name('GuardarReseña');
